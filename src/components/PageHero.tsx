@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { SteelLine } from './SteelLine'
 import { images } from '../assets/images'
 
@@ -6,6 +7,9 @@ type Props = {
   text?: string
   image?: string
   imageAlt?: string
+  compact?: boolean
+  className?: string
+  children?: ReactNode
 }
 
 export function PageHero({
@@ -13,9 +17,12 @@ export function PageHero({
   text,
   image = images.plant,
   imageAlt = 'A1 Iron & Steel industrial operations',
+  compact = false,
+  className = '',
+  children,
 }: Props) {
   return (
-    <header className="page-hero">
+    <header className={`page-hero ${compact ? 'is-compact' : ''} ${className}`.trim()}>
       <div className="hero-media">
         <img src={image} alt={imageAlt} fetchPriority="high" decoding="async" />
         <div className="hero-shade" />
@@ -24,6 +31,7 @@ export function PageHero({
         <h1 style={{ whiteSpace: 'pre-line' }}>{title}</h1>
         <SteelLine className="my-3" />
         {text ? <p className="lede">{text}</p> : null}
+        {children}
       </div>
     </header>
   )

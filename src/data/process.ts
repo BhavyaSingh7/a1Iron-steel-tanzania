@@ -145,3 +145,103 @@ export const processStages: ProcessStage[] = [
     imageKey: 'impact',
   },
 ]
+
+export const millJourney = [
+  {
+    id: 'mining',
+    number: '01',
+    title: 'Iron Ore Mining',
+    text: 'Ore is extracted and prepared as the iron-bearing start of the route.',
+  },
+  {
+    id: 'dri',
+    number: '02',
+    title: 'DRI / Sponge Iron',
+    text: 'Direct reduction turns ore into sponge iron — the DRI output.',
+  },
+  {
+    id: 'furnace',
+    number: '03',
+    title: 'Induction Furnace',
+    text: 'Sponge iron is charged and melted into liquid steel.',
+  },
+  {
+    id: 'ccm',
+    number: '04',
+    title: 'Continuous Casting',
+    text: 'Steel flows ladle to tundish to mould and solidifies as billets.',
+  },
+  {
+    id: 'rolling',
+    number: '05',
+    title: 'Rolling Mill',
+    text: 'Billets are rolled through successive stands into section.',
+  },
+  {
+    id: 'finished',
+    number: '06',
+    title: 'Finished Steel Products',
+    text: 'Bars, rods and sections leave the line for the catalogue.',
+  },
+] as const
+
+export const millStages = [
+  {
+    id: 'mining',
+    number: '01',
+    nav: 'Mining',
+    title: 'Iron ore mining',
+    text: 'The journey starts in the pit. Iron ore is extracted, hauled and prepared so the plant receives a consistent iron-bearing feed — not a finished metal, but the raw material the rest of the route is built on.',
+    layout: 'split' as const,
+    image: 'mining' as const,
+    imageAlt: 'Open-pit iron ore mining with excavator loading a haul truck',
+  },
+  {
+    id: 'dri',
+    number: '02',
+    nav: 'DRI',
+    title: 'DRI / sponge iron',
+    text: 'In the DRI process, iron ore is reduced without melting. Sponge iron is the output of that step: a porous, metallic charge that carries the iron forward into steelmaking.',
+    layout: 'reverse' as const,
+    image: 'dri' as const,
+    imageAlt: 'DRI plant producing sponge iron',
+  },
+  {
+    id: 'furnace',
+    number: '03',
+    nav: 'Furnace',
+    title: 'Induction furnace',
+    text: 'Sponge iron enters the furnace. Heat takes over. The charge melts into liquid steel under a controlled heat — this is where temperature, chemistry and time meet.',
+    layout: 'immersive' as const,
+    image: 'melting' as const,
+    imageAlt: 'Molten steel pouring from a furnace vessel',
+  },
+  {
+    id: 'ccm',
+    number: '04',
+    nav: 'CCM',
+    title: 'Continuous casting',
+    text: 'Liquid steel leaves the furnace in a ladle. The ladle sits above the tundish — they are not the same vessel. Steel flows from the ladle into the tundish, then through two outlet openings into the casting mould, where it solidifies as billets.',
+    layout: 'technical' as const,
+    image: 'ccm' as const,
+    imageAlt: 'Continuous casting machine forming two glowing steel billets',
+    notes: [
+      'Ladle is placed above the tundish',
+      'Molten steel flows ladle → tundish',
+      'Two tundish outlets feed the mould',
+      'The strand is cut into billets',
+    ],
+  },
+  {
+    id: 'rolling',
+    number: '05',
+    nav: 'Rolling',
+    title: 'Rolling mill',
+    text: 'Hot billets pass through the mill train. Each stand reduces and forms the section until the catalogue profile is reached — bars, rods and related products.',
+    layout: 'reverse' as const,
+    image: 'rolling' as const,
+    imageAlt: 'Rolling mill stands in a linear production train',
+    mill: '15-stand rolling mill + 6-stand block mill',
+  },
+] as const
+

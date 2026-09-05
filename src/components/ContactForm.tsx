@@ -5,44 +5,48 @@ import { Button } from './Button'
 
 type Fields = {
   name: string
-  company: string
   email: string
   phone: string
+  company: string
+  subject: string
   product: string
-  quantity: string
   message: string
 }
 
 const empty: Fields = {
   name: '',
-  company: '',
   email: '',
   phone: '',
+  company: '',
+  subject: '',
   product: '',
-  quantity: '',
   message: '',
 }
 
 function validate(f: Fields) {
   const e: Partial<Record<keyof Fields, string>> = {}
-  if (!f.name.trim()) e.name = 'Enter your full name.'
-  if (!f.company.trim()) e.company = 'Enter your company name.'
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'Enter a valid email address.'
-  if (!f.phone.trim() || f.phone.replace(/\D/g, '').length < 7) e.phone = 'Enter a valid phone number.'
-  if (!f.product) e.product = 'Select a product.'
-  if (!f.message.trim() || f.message.trim().length < 10) e.message = 'Add a short message (10+ characters).'
+  if (!f.name.trim()) e.name = 'Please enter your full name.'
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'Please enter a valid email address.'
+  if (!f.phone.trim() || f.phone.replace(/\D/g, '').length < 7) e.phone = 'Please enter a valid phone number.'
+  if (!f.company.trim()) e.company = 'Please enter your company or organisation.'
+  if (!f.subject.trim()) e.subject = 'Please add a subject so we can route your note.'
+  if (!f.message.trim() || f.message.trim().length < 10) {
+    e.message = 'A short message helps us prepare a useful reply (10+ characters).'
+  }
   return e
 }
 
 export function ContactForm() {
   const [params] = useSearchParams()
   const preset = params.get('product') ?? ''
+  const presetName = products.find((p) => p.slug === preset)?.name ?? ''
   const initial = useMemo<Fields>(
     () => ({
       ...empty,
-      product: products.some((p) => p.slug === preset) ? preset : '',
+      product: presetName ? preset : '',
+      subject: presetName ? `Enquiry: ${presetName}` : '',
     }),
-    [preset],
+    [preset, presetName],
   )
   const [fields, setFields] = useState<Fields>(initial)
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({})
@@ -58,76 +62,128 @@ export function ContactForm() {
 
   if (done) {
     return (
-      <div className="p-4" style={{ border: '1px solid var(--a1-line-dark)' }}>
-        <h3 className="mb-2">Enquiry recorded</h3>
-        <p className="lede">
-          Thank you. A destination email has not been published yet, so this form stores
-          nothing on a server. Please use the contact details on this page once they are
-          confirmed, or reach the team through your existing A1 channel.
+      <div className="contact-success" role="status">
+        <p className="kicker">Received</p>
+        <h3>Thank you — we have your note.</h3>
+        <p>
+          A public email address has not been published yet, so this form does not send to a server.
+          Please keep a copy of what you wrote, and use the contact details on this page once they
+          are confirmed.
         </p>
       </div>
     )
   }
 
-  function field<K extends keyof Fields>(key: K, label: string, el: ReactNode) {
+  function field(key: keyof Fields, label: string, el: ReactNode, hint?: string) {
+    const err = errors[key]
+    const id = `contact-${key}`
+    const errId = `${id}-error`
     return (
-      <label>
-        {label}
-        {el}
-        {errors[key] ? <span className="error">{errors[key]}</span> : null}
-      </label>
+      <div className={key === 'message' || key === 'subject' || key === 'product' ? 'span-2' : undefined}>
+        <label htmlFor={id}>
+          {label}
+          {el}
+        </label>
+        {hint && !err ? <span className="hint">{hint}</span> : null}
+        {err ? (
+          <span className="error" id={errId} role="alert">
+            {err}
+          </span>
+        ) : null}
+      </div>
     )
   }
 
   const set =
     (key: keyof Fields) =>
-    (e: { target: { value: string } }) =>
+    (e: { target: { value: string } }) => {
       setFields((f) => ({ ...f, [key]: e.target.value }))
+      if (errors[key]) setErrors((er) => ({ ...er, [key]: undefined }))
+    }
+
+  const described = (key: keyof Fields) => (errors[key] ? `contact-${key}-error` : undefined)
 
   return (
-    <form className="contact-form" onSubmit={onSubmit} noValidate>
+    <form className="contact-form is-split" onSubmit={onSubmit} noValidate>
+      <p className="form-lead span-2">
+        Share as much as you like about the project. We will come back to you as soon as we can.
+      </p>
       {field(
         'name',
         'Full name',
-        <input name="name" autoComplete="name" value={fields.name} onChange={set('name')} />,
-      )}
-      {field(
-        'company',
-        'Company',
         <input
-          name="company"
-          autoComplete="organization"
-          value={fields.company}
-          onChange={set('company')}
+          id="contact-name"
+          name="name"
+          autoComplete="name"
+          value={fields.name}
+          onChange={set('name')}
+          aria-invalid={Boolean(errors.name)}
+          aria-describedby={described('name')}
         />,
       )}
       {field(
         'email',
-        'Email',
+        'Email address',
         <input
+          id="contact-email"
           name="email"
           type="email"
           autoComplete="email"
           value={fields.email}
           onChange={set('email')}
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={described('email')}
         />,
       )}
       {field(
         'phone',
-        'Phone',
+        'Phone number',
         <input
+          id="contact-phone"
           name="phone"
           type="tel"
           autoComplete="tel"
           value={fields.phone}
           onChange={set('phone')}
+          aria-invalid={Boolean(errors.phone)}
+          aria-describedby={described('phone')}
+        />,
+      )}
+      {field(
+        'company',
+        'Company / organisation',
+        <input
+          id="contact-company"
+          name="company"
+          autoComplete="organization"
+          value={fields.company}
+          onChange={set('company')}
+          aria-invalid={Boolean(errors.company)}
+          aria-describedby={described('company')}
+        />,
+      )}
+      {field(
+        'subject',
+        'Subject',
+        <input
+          id="contact-subject"
+          name="subject"
+          value={fields.subject}
+          onChange={set('subject')}
+          aria-invalid={Boolean(errors.subject)}
+          aria-describedby={described('subject')}
         />,
       )}
       {field(
         'product',
-        'Product',
-        <select name="product" value={fields.product} onChange={set('product')}>
-          <option value="">Select product</option>
+        'Product of interest (optional)',
+        <select
+          id="contact-product"
+          name="product"
+          value={fields.product}
+          onChange={set('product')}
+        >
+          <option value="">Any / not sure yet</option>
           {products.map((p) => (
             <option key={p.slug} value={p.slug}>
               {p.name}
@@ -136,16 +192,23 @@ export function ContactForm() {
         </select>,
       )}
       {field(
-        'quantity',
-        'Quantity',
-        <input name="quantity" value={fields.quantity} onChange={set('quantity')} placeholder="Optional" />,
-      )}
-      {field(
         'message',
         'Message',
-        <textarea name="message" value={fields.message} onChange={set('message')} rows={5} />,
+        <textarea
+          id="contact-message"
+          name="message"
+          value={fields.message}
+          onChange={set('message')}
+          rows={5}
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={described('message')}
+        />,
+        'Quantities, destination and timing help — only if you already know them.',
       )}
-      <Button type="submit">Send enquiry</Button>
+      <div className="span-2 contact-form-cta">
+        <Button type="submit">Send message</Button>
+        <p>No spam. One conversation, treated with care.</p>
+      </div>
     </form>
   )
 }

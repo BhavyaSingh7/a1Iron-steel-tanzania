@@ -29,19 +29,21 @@ html.is-snap #root {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: none;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: var(--nav-h);
-  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 0;
+  scroll-behavior: auto;
 }
 
 html.is-snap .screen {
   min-height: 100svh;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal;
   box-sizing: border-box;
 }
 
-html.is-snap .screen:not(.hero):not(.page-hero) {
+html.is-snap .screen.section,
+html.is-snap .screen-band,
+html.is-snap .footer.screen {
   padding-top: var(--nav-h);
 }
 
@@ -49,7 +51,9 @@ html.is-snap .hero.is-cinematic,
 html.is-snap .page-hero,
 html.is-snap .tz-band,
 html.is-snap .cta-power,
-html.is-snap .process-full .shot {
+html.is-snap .mill-stage,
+html.is-snap .mill-flow,
+html.is-snap .mill-end {
   min-height: 100svh;
 }
 
@@ -528,6 +532,29 @@ textarea {
   margin-top: 1rem;
 }
 
+.page-hero.is-compact {
+  min-height: 0;
+  align-items: center;
+  padding: calc(var(--nav-h) + 1.35rem) 0 2.1rem;
+}
+
+.page-hero.is-compact h1 {
+  font-size: clamp(2rem, 4.6vw, 3.35rem);
+  max-width: 16ch;
+}
+
+.page-hero.is-compact .contact-intro-copy {
+  max-width: 62ch;
+  line-height: 1.75;
+  margin-top: 0.85rem;
+  font-size: 1.02rem;
+}
+
+.page-hero.is-compact .contact-intro-copy strong {
+  color: #fff;
+  font-weight: 600;
+}
+
 /* Brand intro */
 .intro-grid {
   display: grid;
@@ -914,11 +941,14 @@ textarea {
 }
 
 .progress-track {
-  position: sticky;
-  top: var(--nav-h);
-  z-index: 4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 48;
   height: 3px;
-  background: rgba(7, 22, 40, 0.08);
+  pointer-events: none;
+  background: transparent;
 }
 
 .progress-track > span {
@@ -1144,12 +1174,27 @@ textarea {
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-  min-height: 46px;
+  min-height: 48px;
   border: 1px solid var(--a1-line-dark);
   border-radius: var(--radius);
   padding: 0.55rem 0.75rem;
   background: #fff;
   color: var(--a1-dark-blue);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.contact-form input:hover,
+.contact-form select:hover,
+.contact-form textarea:hover {
+  border-color: rgba(12, 74, 122, 0.35);
+}
+
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 2px solid var(--a1-steel);
+  outline-offset: 2px;
+  border-color: var(--a1-steel);
 }
 
 .contact-form textarea {

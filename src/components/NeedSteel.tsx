@@ -1,31 +1,33 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProduct, type Product } from '../data/products.js'
+import { productShowSrc } from '../assets/products'
 import { Button } from './Button'
+import { SteelLine } from './SteelLine'
 
 const jobs = [
   {
     id: 'housing',
-    title: 'A house or building',
-    hint: 'Frames, slabs and site steel',
+    n: '01',
+    title: 'House or building',
     slugs: ['tmt-bars', 'brc-welded-mesh', 'binding-wire'],
   },
   {
     id: 'infra',
-    title: 'Roads or public works',
-    hint: 'Civil structures and sections',
+    n: '02',
+    title: 'Roads and civil works',
     slugs: ['tmt-bars', 'v-angles', 'c-channels'],
   },
   {
     id: 'plant',
-    title: 'A plant or warehouse',
-    hint: 'Frames, purlins and hollows',
+    n: '03',
+    title: 'Plant or warehouse',
     slugs: ['hollow-sections', 'c-channels', 'flat-bars'],
   },
   {
     id: 'site',
-    title: 'Fencing and site work',
-    hint: 'Mesh, wire and fasteners',
+    n: '04',
+    title: 'Fencing and site',
     slugs: ['gi-chain-link', 'barbed-wire', 'wire-nails'],
   },
 ] as const
@@ -37,40 +39,64 @@ export function NeedSteel() {
     () => job.slugs.map((slug) => getProduct(slug)).filter((p: Product | undefined): p is Product => Boolean(p)),
     [job],
   )
+  const lead = picks[0]
+  const rest = picks.slice(1)
 
   return (
     <div className="need-steel">
-      <div className="need-steel-copy">
-        <p className="kicker">Start here</p>
-        <h3>What are you building?</h3>
-        <p>Pick a job. We will show catalogue lines that typically go on that site — then open the product page.</p>
-      </div>
-      <div className="need-steel-picks" role="tablist" aria-label="Project type">
-        {jobs.map((j) => (
-          <button
-            key={j.id}
-            type="button"
-            role="tab"
-            aria-selected={j.id === id}
-            className={j.id === id ? 'is-on' : ''}
-            onClick={() => setId(j.id)}
-          >
-            <strong>{j.title}</strong>
-            <span>{j.hint}</span>
-          </button>
-        ))}
-      </div>
-      <ul className="need-steel-out">
-        {picks.map((p) => (
-          <li key={p.slug}>
-            <Link to={`/products/${p.slug}`}>
-              <em>{p.categoryLabel}</em>
-              {p.name}
-              <span>{p.shortDescription}</span>
+      <header className="need-steel-copy">
+        <p className="kicker">The mill</p>
+        <h3>Steel for the job.</h3>
+        <SteelLine className="my-3" />
+        <p>Select a project type. The catalogue lines that typically go on that site open on the right.</p>
+      </header>
+
+      <div className="need-steel-board">
+        <div className="need-steel-jobs" role="tablist" aria-label="Project type">
+          {jobs.map((j) => (
+            <button
+              key={j.id}
+              type="button"
+              role="tab"
+              aria-selected={j.id === id}
+              aria-controls="need-steel-stage"
+              className={j.id === id ? 'is-on' : ''}
+              onClick={() => setId(j.id)}
+            >
+              <span>{j.n}</span>
+              {j.title}
+            </button>
+          ))}
+        </div>
+
+        <div className="need-steel-stage" id="need-steel-stage">
+          {lead ? (
+            <Link to={`/products/${lead.slug}`} className="need-steel-lead">
+              <img src={productShowSrc(lead.slug)} alt="" />
+              <span>
+                <em>{lead.categoryLabel}</em>
+                <strong>{lead.name}</strong>
+                <small>{lead.shortDescription}</small>
+                Open product →
+              </span>
             </Link>
-          </li>
-        ))}
-      </ul>
+          ) : null}
+          <ul>
+            {rest.map((p) => (
+              <li key={p.slug}>
+                <Link to={`/products/${p.slug}`}>
+                  <img src={productShowSrc(p.slug)} alt="" />
+                  <span>
+                    <em>{p.categoryLabel}</em>
+                    <strong>{p.name}</strong>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
       <div className="need-steel-cta">
         <Button to="/products" variant="ghost">
           Full catalogue

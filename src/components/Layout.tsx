@@ -3,13 +3,11 @@ import { Footer } from './Footer'
 import { ScrollProgress } from './ScrollProgress'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect, useLayoutEffect } from 'react'
-import { useScreenSnap } from '../hooks/useScreenSnap'
 import { getSnapScroller } from '../lib/scrollRoot'
 
 export function Layout() {
   const { pathname } = useLocation()
   const snap = pathname === '/' || pathname === '/process'
-  useScreenSnap(snap)
 
   useEffect(() => {
     const root = getSnapScroller()

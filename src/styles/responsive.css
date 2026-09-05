@@ -23,8 +23,18 @@ video {
 .cta-power img,
 .process-full .shot img,
 .detail-hero img,
+.pd-shot img,
+.pd-related-card img,
+.pd-bg,
+.pd-peer img,
 .catalogue-card img,
-.product-card img {
+.product-card img,
+.need-steel-lead img,
+.need-steel-stage li img,
+.range-tile img,
+.show-frame img,
+.mill-stage > img,
+.mill-end > img {
   max-width: none;
 }
 
@@ -97,6 +107,10 @@ video {
   .page-hero h1 {
     font-size: 2.35rem;
     max-width: none;
+  }
+
+  .page-hero.is-compact h1 {
+    font-size: 1.9rem;
   }
 
   .hero.is-cinematic .hero-content,
@@ -235,13 +249,27 @@ video {
     min-height: 240px;
   }
 
-  .process-full .shot {
-    min-height: 72svh;
+  .process-full .shot,
+  .mill-stage,
+  .mill-flow,
+  .mill-end {
+    min-height: 100svh;
   }
 
-  .contact-split .info,
-  .contact-split .form-pane {
-    padding: 2rem 1.15rem;
+  .mill-rail {
+    display: none !important;
+  }
+
+  .contact-form-pane {
+    padding: 1.25rem 1.05rem 1.4rem;
+  }
+
+  .contact-stage {
+    padding: 2.25rem 0 2.6rem;
+  }
+
+  .contact-close {
+    padding: 2.6rem 0;
   }
 
   .contact-form .btn-a1 {

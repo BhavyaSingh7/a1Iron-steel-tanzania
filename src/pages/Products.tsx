@@ -1,8 +1,9 @@
 import { products } from '../data/products.js'
-import { images } from '../assets/images'
+import { productShowSrc } from '../assets/products'
 import { PageHero } from '../components/PageHero'
-import { ProductGrid } from '../components/ProductGrid'
+import { ProductWall } from '../components/ProductWall'
 import { Button } from '../components/Button'
+import { SteelLine } from '../components/SteelLine'
 import { Seo } from '../components/Seo'
 
 export default function Products() {
@@ -27,23 +28,34 @@ export default function Products() {
         schema={schema}
       />
       <PageHero
-        title="Our products"
-        text="Steel engineered for performance. A digital catalogue for construction, infrastructure and industry."
-        image={images.productsBanner}
-      />
-      <section className="section">
+        compact
+        className="products-hero"
+        title={'Built for strength.\nEngineered for progress.'}
+        image={productShowSrc('tmt-bars')}
+        imageAlt="Bundled TMT bars in the mill yard"
+      >
+        <p className="lede products-hero-copy">
+          Explore the A1 Iron &amp; Steel product range — manufactured to meet the demands of
+          construction, engineering, infrastructure, and industry.
+        </p>
+      </PageHero>
+
+      <ProductWall products={products} />
+
+      <section className="show-cta" aria-labelledby="show-cta-title">
         <div className="container-a1">
-          <ProductGrid products={products} filterable variant="catalogue" />
-          <div className="quote-strip mt-5">
-            <div>
-              <p className="kicker mb-2">Sales</p>
-              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}>Request a quote</h2>
-              <p className="lede mt-2">
-                Technical sheets follow mill confirmation. Sizes and standards remain [TECHNICAL DATA TO BE
-                ADDED] until verified.
-              </p>
-            </div>
-            <Button to="/contact">Request a quote</Button>
+          <p className="kicker">Next</p>
+          <h2 id="show-cta-title">The right steel for every build.</h2>
+          <SteelLine className="my-3" />
+          <p className="lede">
+            From reinforcement to structural sections, A1 Iron &amp; Steel delivers products
+            engineered for strength, reliability, and progress.
+          </p>
+          <div className="hero-actions mt-4">
+            <Button to="/contact">Talk to Our Team →</Button>
+            <Button to="/contact" variant="outline">
+              Contact Us →
+            </Button>
           </div>
         </div>
       </section>

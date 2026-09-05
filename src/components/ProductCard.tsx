@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { Product } from '../data/products.js'
-import { productCardSrc } from '../assets/images'
+import { productCardSrc } from '../assets/catalogue'
 
 type Props = {
   product: Product

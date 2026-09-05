@@ -1,20 +1,20 @@
-import { Button } from './Button'
-import { SteelLine } from './SteelLine'
-import { images } from '../assets/images'
+import { Button } from "./Button";
+import { SteelLine } from "./SteelLine";
+import { images } from "../assets/images";
 
 type Props = {
-  eyebrow?: string
-  title: string
-  text?: string
-  primary?: { to: string; label: string }
-  secondary?: { to: string; label: string }
-  image?: string
-  imageAlt?: string
-  minHeight?: string
-  cinematic?: boolean
-  panel?: { kicker: string; text: string }
-  className?: string
-}
+  eyebrow?: string;
+  title: string;
+  text?: string;
+  primary?: { to: string; label: string };
+  secondary?: { to: string; label: string };
+  image?: string;
+  imageAlt?: string;
+  minHeight?: string;
+  cinematic?: boolean;
+  panel?: { kicker: string; text: string };
+  className?: string;
+};
 
 export function Hero({
   eyebrow,
@@ -23,14 +23,17 @@ export function Hero({
   primary,
   secondary,
   image = images.hero,
-  imageAlt = 'Industrial steel manufacturing',
+  imageAlt = "Industrial steel manufacturing",
   minHeight,
   cinematic,
   panel,
-  className = '',
+  className = "",
 }: Props) {
   return (
-    <section className={`hero ${cinematic ? 'is-cinematic' : ''} ${className}`.trim()} style={minHeight ? { minHeight } : undefined}>
+    <section
+      className={`hero ${cinematic ? "is-cinematic" : ""} ${className}`.trim()}
+      style={minHeight ? { minHeight } : undefined}
+    >
       <div className="hero-media">
         <img src={image} alt={imageAlt} fetchPriority="high" decoding="async" />
         <div className="hero-shade" />
@@ -51,7 +54,7 @@ export function Hero({
       </div>
       <div className="container-a1 hero-content">
         {eyebrow ? <p className="kicker">{eyebrow}</p> : null}
-        <h1 style={{ whiteSpace: 'pre-line' }}>{title}</h1>
+        <h1 style={{ whiteSpace: "pre-line" }}>{title}</h1>
         <SteelLine className="mb-4" />
         {text ? <p className="lede">{text}</p> : null}
         {(primary || secondary) && (
@@ -76,5 +79,5 @@ export function Hero({
         <b />
       </div>
     </section>
-  )
+  );
 }

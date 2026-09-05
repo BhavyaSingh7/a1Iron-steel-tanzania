@@ -14,16 +14,6 @@ import f6 from './f6.webp'
 import f7 from './f7.webp'
 import making from './making.webp'
 
-const productCardModules = import.meta.glob('./products/*-card.webp', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>
-
-const productFullModules = import.meta.glob('./products/*.webp', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>
-
 export const images = {
   hero,
   plant,
@@ -40,20 +30,6 @@ export const images = {
   f6,
   f7,
   making,
-}
-
-export function productCardSrc(slug: string) {
-  const entry = Object.entries(productCardModules).find(([path]) =>
-    path.endsWith(`${slug}-card.webp`),
-  )
-  return entry?.[1] ?? ''
-}
-
-export function productFullSrc(slug: string) {
-  const entry = Object.entries(productFullModules).find(
-    ([path]) => path.endsWith(`${slug}.webp`) && !path.includes('-card'),
-  )
-  return entry?.[1] ?? productCardSrc(slug)
 }
 
 export type ImageKey = keyof typeof images

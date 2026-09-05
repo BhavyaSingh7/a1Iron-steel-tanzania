@@ -7,7 +7,7 @@ import { getSnapScroller } from '../lib/scrollRoot'
 
 export function Layout() {
   const { pathname } = useLocation()
-  const snap = pathname === '/' || pathname === '/process'
+  const snap = pathname === '/process'
 
   useEffect(() => {
     const root = getSnapScroller()

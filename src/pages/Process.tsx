@@ -44,22 +44,13 @@ export default function Process() {
         path="/process"
       />
 
-      <div className="mill-preload" aria-hidden="true">
-        <img src={processImages.mining} alt="" />
-        <img src={processImages.dri} alt="" />
-        <img src={processImages.melting} alt="" />
-        <img src={processImages.ccm} alt="" />
-        <img src={processImages.rolling} alt="" />
-        <img src={processImages.finished} alt="" />
-      </div>
-
       <header className="page-hero process-hero screen">
         <div className="hero-media">
           <img
             src={processImages.ccm}
             alt="Continuous casting of steel billets"
             fetchPriority="high"
-            decoding="sync"
+            decoding="async"
           />
           <div className="hero-shade" />
         </div>
@@ -86,7 +77,12 @@ export default function Process() {
             stageRefs.current[i] = el
           }}
         >
-          <img src={processImages[stage.image]} alt={stage.imageAlt} decoding="async" />
+          <img
+            src={processImages[stage.image]}
+            alt={stage.imageAlt}
+            decoding="async"
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
           <div className="mill-shade" aria-hidden="true" />
           <div className="container-a1 mill-copy">
             <p className="kicker">Process {stage.number} / 05</p>

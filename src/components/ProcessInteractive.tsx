@@ -32,7 +32,7 @@ export function ProcessInteractive() {
         </ol>
       </div>
       <article className="proc-h-stage">
-        <img src={images[stage.imageKey]} alt="" />
+        <img src={images[stage.imageKey]} alt="" loading="lazy" decoding="async" />
         <div className="pane">
           <p className="kicker">Stage {String(i + 1).padStart(2, '0')} / 07</p>
           <h3>{stage.title}</h3>

@@ -1,15 +1,15 @@
-import rawMaterials from './raw_materials.png'
-import dri from './DRI_Sponge IRON.jpg'
-import melting from './melting process.jpg'
-import ccm from './continuous_casting.png'
-import billets from './billets.jpg'
-import rolling from './rolling_mill.jpeg'
-import finished from './finished_products.png'
-import quality from './quality control.jpeg'
-import packing from './packing and dispatch.jpg'
+import mining from './opt/mining.webp'
+import dri from './opt/dri.webp'
+import melting from './opt/melting.webp'
+import ccm from './opt/ccm.webp'
+import billets from './opt/billets.webp'
+import rolling from './opt/rolling.webp'
+import finished from './opt/finished.webp'
+import quality from './opt/quality.webp'
+import packing from './opt/packing.webp'
 
 export const processImages = {
-  mining: rawMaterials,
+  mining,
   dri,
   melting,
   ccm,

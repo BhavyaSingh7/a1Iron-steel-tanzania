@@ -30,7 +30,7 @@ export function ProductWall({ products }: Props) {
                   className="range-tile"
                   aria-label={`${n}. ${p.name}, ${p.categoryLabel}. Open product page.`}
                 >
-                  <img src={src} alt="" loading={i < 4 ? 'eager' : 'lazy'} decoding="async" />
+                  <img src={src} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
                   <span className="range-num" aria-hidden="true">
                     {n}
                   </span>

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProduct, type Product } from '../data/products.js'
-import { productShowSrc } from '../assets/products'
+import { productFullSrc } from '../assets/catalogue'
 import { Button } from './Button'
 import { SteelLine } from './SteelLine'
 
@@ -72,7 +72,7 @@ export function NeedSteel() {
         <div className="need-steel-stage" id="need-steel-stage">
           {lead ? (
             <Link to={`/products/${lead.slug}`} className="need-steel-lead">
-              <img src={productShowSrc(lead.slug)} alt="" />
+              <img src={productFullSrc(lead.slug)} alt="" loading="lazy" decoding="async" />
               <span>
                 <em>{lead.categoryLabel}</em>
                 <strong>{lead.name}</strong>
@@ -85,7 +85,7 @@ export function NeedSteel() {
             {rest.map((p) => (
               <li key={p.slug}>
                 <Link to={`/products/${p.slug}`}>
-                  <img src={productShowSrc(p.slug)} alt="" />
+                  <img src={productFullSrc(p.slug)} alt="" loading="lazy" decoding="async" />
                   <span>
                     <em>{p.categoryLabel}</em>
                     <strong>{p.name}</strong>

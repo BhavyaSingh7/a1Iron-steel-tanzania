@@ -27,6 +27,8 @@ export function ProductDetailView({ product }: { product: Product }) {
           className="pd-bg"
           src={src}
           alt={`${product.name} from A1 Iron & Steel Tanzania Limited`}
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="pd-shade" />
         <Link to="/products" className="pd-back">
@@ -55,7 +57,7 @@ export function ProductDetailView({ product }: { product: Product }) {
       <section className="pd-dossier" aria-labelledby="pd-overview">
         <div className="container-a1 pd-dossier-grid">
           <figure className="pd-shot">
-            <img src={src} alt={`${product.name} — catalogue photograph`} />
+            <img src={src} alt={`${product.name} — catalogue photograph`} loading="lazy" decoding="async" />
           </figure>
           <div>
             <p className="kicker">Product dossier</p>
@@ -128,7 +130,7 @@ export function ProductDetailView({ product }: { product: Product }) {
             {related.map((p) => (
               <li key={p.slug}>
                 <Link to={`/products/${p.slug}`} className="pd-related-card">
-                  <img src={productShowSrc(p.slug)} alt="" />
+                  <img src={productShowSrc(p.slug)} alt="" loading="lazy" decoding="async" />
                   <span>
                     <em>{p.categoryLabel}</em>
                     <strong>{p.name}</strong>
@@ -143,14 +145,14 @@ export function ProductDetailView({ product }: { product: Product }) {
 
       <nav className="pd-pager" aria-label="Other products">
         <Link to={`/products/${prev.slug}`} className="pd-peer">
-          <img src={productShowSrc(prev.slug)} alt="" />
+          <img src={productShowSrc(prev.slug)} alt="" loading="lazy" decoding="async" />
           <span>
             <em>Previous</em>
             <strong>{prev.name}</strong>
           </span>
         </Link>
         <Link to={`/products/${next.slug}`} className="pd-peer is-next">
-          <img src={productShowSrc(next.slug)} alt="" />
+          <img src={productShowSrc(next.slug)} alt="" loading="lazy" decoding="async" />
           <span>
             <em>Next</em>
             <strong>{next.name}</strong>

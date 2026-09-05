@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { Product } from '../data/products.js'
-import { productFullSrc } from '../assets/images'
+import { productFullSrc } from '../assets/catalogue'
 
 export function CatalogueCard({ product }: { product: Product }) {
   return (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { getScrollY } from '../lib/scrollRoot'
 import { navLinks } from '../data/company'
 import { Button } from './Button'
 import { BrandLogo } from './BrandLogo'
@@ -18,16 +19,24 @@ export function Navbar() {
   }, [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(getScrollY() > 24)
     onScroll()
+    const root = document.querySelector('.site-wrap')
+    root?.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      root?.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    const scroller = document.querySelector<HTMLElement>('.site-wrap.is-snap')
+    if (scroller) scroller.style.overflowY = open ? 'hidden' : 'auto'
     return () => {
       document.body.style.overflow = ''
+      if (scroller) scroller.style.overflowY = ''
     }
   }, [open])
 
@@ -40,7 +49,7 @@ export function Navbar() {
         Skip to content
       </a>
       <header className={cls}>
-        <div className="container-a1">
+        <div className="nav-shell">
           <Link to="/" className="nav-brand" aria-label="A1 Iron & Steel Tanzania Limited home">
             <BrandLogo />
           </Link>

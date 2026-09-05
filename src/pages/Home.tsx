@@ -4,6 +4,7 @@ import { products } from '../data/products.js'
 import { images } from '../assets/images'
 import { Hero } from '../components/Hero'
 import { Marquee } from '../components/Marquee'
+import { NeedSteel } from '../components/NeedSteel'
 import { ProductShowcase } from '../components/ProductShowcase'
 import { ProcessInteractive } from '../components/ProcessInteractive'
 import { ApplicationsMosaic } from '../components/ApplicationsMosaic'
@@ -59,6 +60,7 @@ export default function Home() {
             </ol>
           </div>
         </div>
+        <NeedSteel />
       </section>
 
       <section className="section marks screen">

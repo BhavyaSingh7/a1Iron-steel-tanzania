@@ -1,11 +1,11 @@
 /* Screen-by-screen adaptation: 375 / 390 / 430 / 768 / 1024 / 1440 / 1920 */
 
-html {
-  overflow-x: hidden;
+html:not(.is-snap) {
+  overflow-x: clip;
 }
 
-body {
-  overflow-x: hidden;
+body:not(:has(.site-wrap.is-snap)) {
+  overflow-x: clip;
 }
 
 img,
@@ -40,7 +40,7 @@ video {
   padding-inline: 0.15rem;
 }
 
-.nav-a1 .container-a1 {
+.nav-shell {
   gap: 0.65rem;
 }
 
@@ -84,8 +84,8 @@ video {
   }
 
   .nav-brand .brand-lockup {
-    height: 50px;
-    max-width: min(260px, 68vw);
+    height: 40px;
+    max-width: min(220px, 58vw);
   }
 
   .hero.is-cinematic,
@@ -264,8 +264,8 @@ video {
   }
 
   .nav-brand .brand-lockup {
-    height: 56px;
-    max-width: min(300px, 64vw);
+    height: 46px;
+    max-width: min(280px, 62vw);
   }
 
   .hero h1 {
@@ -345,8 +345,8 @@ video {
 /* —— 768–1023 tablets —— */
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .nav-brand .brand-lockup {
-    height: 64px;
-    max-width: 380px;
+    height: 50px;
+    max-width: 340px;
   }
 
   .hero h1 {
@@ -416,8 +416,8 @@ video {
 /* —— 1024–1439 laptops —— */
 @media (min-width: 1024px) and (max-width: 1099.98px) {
   .nav-brand .brand-lockup {
-    max-width: 420px;
-    height: 68px;
+    max-width: 380px;
+    height: 50px;
   }
 }
 

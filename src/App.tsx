@@ -28,9 +28,11 @@ function Fallback() {
   )
 }
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename === '/' ? undefined : basename}>
       <Suspense fallback={<Fallback />}>
         <Routes>
           <Route element={<Layout />}>

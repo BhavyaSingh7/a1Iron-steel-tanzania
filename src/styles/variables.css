@@ -1,0 +1,39 @@
+:root {
+  --a1-blue: #0c4a7a;
+  --a1-steel: #2a7ab3;
+  --a1-dark-blue: #071628;
+  --a1-orange: #f58220;
+  --a1-amber: #ffb347;
+  --a1-charcoal: #0a0d12;
+  --a1-ink: #12171f;
+  --a1-light: #f3f5f7;
+  --a1-muted: #6b7785;
+  --a1-line: rgba(255, 255, 255, 0.12);
+  --a1-line-dark: rgba(7, 22, 40, 0.12);
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+  --space-9: 7.5rem;
+
+  --nav-h: 64px;
+  --radius: 2px;
+  --max: 1240px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --nav-h: 56px;
+    --space-8: 3.5rem;
+    --space-9: 4.5rem;
+  }
+}

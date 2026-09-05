@@ -1,10 +1,9 @@
 import { products } from '../data/products.js'
+import { images } from '../assets/images'
 import { PageHero } from '../components/PageHero'
 import { ProductGrid } from '../components/ProductGrid'
-import { SectionHeading } from '../components/SectionHeading'
 import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
-import { CTASection } from '../components/CTASection'
 
 export default function Products() {
   const schema = {
@@ -27,29 +26,27 @@ export default function Products() {
         path="/products"
         schema={schema}
       />
-      <PageHero title="Our products" text="Steel engineered for performance." />
+      <PageHero
+        title="Our products"
+        text="Steel engineered for performance. A digital catalogue for construction, infrastructure and industry."
+        image={images.productsBanner}
+      />
       <section className="section">
         <div className="container-a1">
-          <SectionHeading kicker="Catalogue" title={'Specified for\nconstruction and industry.'} />
-          <div className="mt-5">
-            <ProductGrid products={products} filterable cta="View product" />
-          </div>
+          <ProductGrid products={products} filterable variant="catalogue" />
           <div className="quote-strip mt-5">
             <div>
               <p className="kicker mb-2">Sales</p>
-              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}>Need a quotation?</h2>
-              <p className="lede mt-2">Tell us the product, quantity and destination. Technical sheets will follow once mill data is confirmed.</p>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}>Request a quote</h2>
+              <p className="lede mt-2">
+                Technical sheets follow mill confirmation. Sizes and standards remain [TECHNICAL DATA TO BE
+                ADDED] until verified.
+              </p>
             </div>
             <Button to="/contact">Request a quote</Button>
           </div>
         </div>
       </section>
-      <CTASection
-        title={"Let’s build something\nstronger."}
-        text="Talk to our team about your steel requirements."
-        cta="Get in touch"
-        to="/contact"
-      />
     </>
   )
 }

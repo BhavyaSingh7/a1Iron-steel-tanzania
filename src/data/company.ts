@@ -46,12 +46,80 @@ export const company = {
   ],
   whyA1: ['QUALITY', 'PRECISION', 'STRENGTH', 'RELIABILITY', 'INNOVATION'],
   applications: [
-    { slug: 'construction', title: 'Construction', imageKey: 'plant' as const },
-    { slug: 'infrastructure', title: 'Infrastructure', imageKey: 'f2' as const },
-    { slug: 'industrial', title: 'Industrial Projects', imageKey: 'f7' as const },
-    { slug: 'manufacturing', title: 'Manufacturing', imageKey: 'quality' as const },
-    { slug: 'commercial', title: 'Commercial Buildings', imageKey: 'hm6' as const },
-    { slug: 'residential', title: 'Residential Development', imageKey: 'f4' as const },
+    {
+      slug: 'construction',
+      title: 'Construction',
+      text: 'Reinforcement, mesh and site steel for frames, slabs and civil works.',
+      imageKey: 'plant' as const,
+    },
+    {
+      slug: 'infrastructure',
+      title: 'Infrastructure',
+      text: 'Steel for roads, bridges, utilities and public works programmes.',
+      imageKey: 'f2' as const,
+    },
+    {
+      slug: 'industrial',
+      title: 'Industrial',
+      text: 'Sections and bars for plants, warehouses and process buildings.',
+      imageKey: 'f7' as const,
+    },
+    {
+      slug: 'commercial',
+      title: 'Commercial',
+      text: 'Structural and finishing steel for offices, retail and mixed-use.',
+      imageKey: 'hm6' as const,
+    },
+    {
+      slug: 'residential',
+      title: 'Residential',
+      text: 'TMT, mesh and wire products for housing and estate development.',
+      imageKey: 'f4' as const,
+    },
+    {
+      slug: 'manufacturing',
+      title: 'Manufacturing',
+      text: 'Feedstock and sections for fabricators, converters and OEMs.',
+      imageKey: 'quality' as const,
+    },
+  ],
+  categories: [
+    {
+      id: 'reinforcement',
+      title: 'Reinforcement steel',
+      text: 'TMT bars and welded mesh for concrete structures.',
+      imageKey: 'productsBanner' as const,
+    },
+    {
+      id: 'structural',
+      title: 'Structural steel',
+      text: 'Angles, channels and rounds for frames and fabrication.',
+      imageKey: 'plant' as const,
+    },
+    {
+      id: 'wire',
+      title: 'Wire products',
+      text: 'Rod, binding wire, nails and fencing wire.',
+      imageKey: 'f1' as const,
+    },
+    {
+      id: 'flat',
+      title: 'Flat products',
+      text: 'Flat bars and hot-rolled strip for further processing.',
+      imageKey: 'making' as const,
+    },
+    {
+      id: 'hollow',
+      title: 'Hollow sections',
+      text: 'Structural hollow profiles for columns and trusses.',
+      imageKey: 'f7' as const,
+    },
+  ],
+  pillars: [
+    { n: '01', title: 'Steel products', text: 'A catalogue spanning reinforcement, structural, wire, flat and hollow sections.' },
+    { n: '02', title: 'Modern manufacturing', text: 'A process route from charge to finished bar, rod and section.' },
+    { n: '03', title: 'Quality control', text: 'Inspection and release discipline before packing and dispatch.' },
+    { n: '04', title: 'Built for Tanzania', text: 'Steel specified for local construction, infrastructure and industry.' },
   ],
   stats: [
     {

@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { processStages } from '../data/process'
 import { images, type ImageKey } from '../assets/images'
-import { PageHero } from '../components/PageHero'
-import { ImageReveal } from '../components/ImageReveal'
-import { CTASection } from '../components/CTASection'
+import { Button } from '../components/Button'
+import { SteelLine } from '../components/SteelLine'
 import { Seo } from '../components/Seo'
 
 export default function Process() {
@@ -21,7 +20,7 @@ export default function Process() {
         const idx = refs.current.findIndex((n) => n === visible.target)
         if (idx >= 0) setActive(idx)
       },
-      { threshold: [0.35, 0.55], rootMargin: '-20% 0px -30% 0px' },
+      { threshold: [0.4, 0.65], rootMargin: '-15% 0px -25% 0px' },
     )
     refs.current.forEach((el) => el && obs.observe(el))
     return () => obs.disconnect()
@@ -34,42 +33,68 @@ export default function Process() {
         description="From raw material and DRI to melting, casting, rolling and dispatch — how A1 Iron & Steel Tanzania Limited turns heat into structural steel."
         path="/process"
       />
-      <PageHero
-        title={"Where heat\nbecomes strength."}
-        text="A visual journey through the steelmaking route."
-      />
+      <header className="page-hero screen">
+        <div className="hero-media">
+          <img src={images.making} alt="Steelmaking operations" fetchPriority="high" />
+          <div className="hero-shade" />
+        </div>
+        <div className="container-a1" style={{ position: 'relative', zIndex: 1 }}>
+          <p className="kicker">Manufacturing</p>
+          <h1>
+            Where heat
+            <br />
+            becomes strength.
+          </h1>
+          <SteelLine className="my-3" />
+          <p className="lede">A scroll journey through the steelmaking route.</p>
+        </div>
+      </header>
       <div className="progress-track" aria-hidden="true">
         <span style={{ width: `${progress}%` }} />
       </div>
-      <div className="process-page">
-        <div className="container-a1">
-          {processStages.map((stage, i) => (
-            <article
-              key={stage.id}
-              className={`stage ${i === active ? 'is-active' : ''}`}
-              ref={(el) => {
-                refs.current[i] = el
-              }}
-            >
-              <ImageReveal
-                src={images[stage.imageKey as ImageKey]}
-                alt={`${stage.title} stage in steel manufacturing`}
-              />
-              <div className="stage-copy">
-                <div className="stage-num">{stage.number}</div>
-                <h2 className="mt-2">{stage.title}</h2>
-                <p className="lede mt-3">{stage.text}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+      <div className="process-full">
+        {processStages.map((stage, i) => (
+          <article
+            key={stage.id}
+            className={`shot screen ${i === active ? 'is-active' : ''}`}
+            ref={(el) => {
+              refs.current[i] = el
+            }}
+          >
+            <img src={images[stage.imageKey as ImageKey]} alt="" />
+            <div className="container-a1 copy">
+              <p className="kicker">
+                {stage.number} / 09
+              </p>
+              <h2>{stage.title}</h2>
+              <SteelLine className="my-3" />
+              <p className="lede" style={{ color: 'rgba(255,255,255,0.8)', maxWidth: '40rem' }}>
+                {stage.text}
+              </p>
+              <p className="placeholder mt-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                {stage.equipment}
+              </p>
+            </div>
+          </article>
+        ))}
       </div>
-      <CTASection
-        title={"Let’s build something\nstronger."}
-        text="Talk to our team about your steel requirements."
-        cta="Get in touch"
-        to="/contact"
-      />
+      <section className="cta-power screen" style={{ minHeight: '100svh' }}>
+        <img src={images.cta} alt="" />
+        <div className="shade" />
+        <div className="container-a1" style={{ position: 'relative', zIndex: 1 }}>
+          <h2>
+            Ready to specify
+            <br />
+            the next heat?
+          </h2>
+          <div className="hero-actions mt-4">
+            <Button to="/contact">Talk to A1</Button>
+            <Button to="/products" variant="ghost">
+              Explore products
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

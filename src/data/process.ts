@@ -4,6 +4,7 @@ export type ProcessStage = {
   title: string
   shortTitle: string
   text: string
+  equipment: string
   imageKey:
     | 'making'
     | 'f1'
@@ -16,14 +17,49 @@ export type ProcessStage = {
     | 'impact'
 }
 
-export const homeProcess: { title: string }[] = [
-  { title: 'Raw Material' },
-  { title: 'DRI / Sponge Iron' },
-  { title: 'Melting' },
-  { title: 'Continuous Casting' },
-  { title: 'Billet' },
-  { title: 'Rolling' },
-  { title: 'Finished Products' },
+export const homeProcess = [
+  {
+    title: 'Raw Material',
+    text: 'Iron-bearing inputs and alloys are received, checked and staged for reduction and melting.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'making' as const,
+  },
+  {
+    title: 'DRI',
+    text: 'Direct-reduced iron is produced as a clean metallic charge — the bridge between ore and liquid steel.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'f1' as const,
+  },
+  {
+    title: 'Melting',
+    text: 'Charge is melted and refined. Chemistry is adjusted so the heat matches the grade that will be cast.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'hero' as const,
+  },
+  {
+    title: 'Continuous Casting',
+    text: 'Liquid steel is cast into a continuous strand, cooled and cut into solid section.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'f6' as const,
+  },
+  {
+    title: 'Billet',
+    text: 'Cast billets are inspected and conditioned as feedstock for the rolling mill.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'manufacturing' as const,
+  },
+  {
+    title: 'Rolling',
+    text: 'Billets are reheated and passed through successive stands to the required profile.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'plant' as const,
+  },
+  {
+    title: 'Finished Product',
+    text: 'Bars, rods and sections are cut, cooled, bundled or coiled for the catalogue.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
+    imageKey: 'cta' as const,
+  },
 ]
 
 export const processStages: ProcessStage[] = [
@@ -33,6 +69,7 @@ export const processStages: ProcessStage[] = [
     title: 'Raw Material',
     shortTitle: 'Raw Material',
     text: 'Iron-bearing inputs and alloys are received, checked and staged for reduction and melting. Exact feedstock mix is confirmed at mill level.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'making',
   },
   {
@@ -41,6 +78,7 @@ export const processStages: ProcessStage[] = [
     title: 'DRI / Sponge Iron',
     shortTitle: 'DRI / Sponge Iron',
     text: 'Direct-reduced iron is produced as a clean metallic charge — the bridge between ore and liquid steel.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'f1',
   },
   {
@@ -49,6 +87,7 @@ export const processStages: ProcessStage[] = [
     title: 'Melting',
     shortTitle: 'Melting',
     text: 'Charge is melted and refined. Chemistry is adjusted so the heat matches the grade that will be cast.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'hero',
   },
   {
@@ -57,6 +96,7 @@ export const processStages: ProcessStage[] = [
     title: 'Continuous Casting',
     shortTitle: 'Continuous Casting',
     text: 'Liquid steel is cast into a continuous strand, cooled and cut — turning heat into a solid section ready for rolling.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'f6',
   },
   {
@@ -65,6 +105,7 @@ export const processStages: ProcessStage[] = [
     title: 'Billet',
     shortTitle: 'Billet',
     text: 'Cast billets are inspected and conditioned. This is the feedstock the rolling mill will draw into bars, rods and sections.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'manufacturing',
   },
   {
@@ -73,6 +114,7 @@ export const processStages: ProcessStage[] = [
     title: 'Rolling Mill',
     shortTitle: 'Rolling',
     text: 'Billets are reheated and passed through successive stands until they reach the required profile and mechanical properties.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'plant',
   },
   {
@@ -81,6 +123,7 @@ export const processStages: ProcessStage[] = [
     title: 'Finishing',
     shortTitle: 'Finishing',
     text: 'Product is cut, cooled, bundled or coiled according to form — bars, rods, sections and converted wire products.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'cta',
   },
   {
@@ -89,6 +132,7 @@ export const processStages: ProcessStage[] = [
     title: 'Quality Control',
     shortTitle: 'Quality Control',
     text: 'Dimensional checks and mechanical tests confirm the heat before it is released. Specific standards will be listed when certified.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'quality',
   },
   {
@@ -97,6 +141,7 @@ export const processStages: ProcessStage[] = [
     title: 'Packing & Dispatch',
     shortTitle: 'Dispatch',
     text: 'Finished steel is tagged, packed and loaded for delivery to sites, stockists and fabricators.',
+    equipment: '[EQUIPMENT DATA TO BE ADDED]',
     imageKey: 'impact',
   },
 ]

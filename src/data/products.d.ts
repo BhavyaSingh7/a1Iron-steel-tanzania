@@ -28,3 +28,4 @@ export const products: Product[]
 export const productSlugs: string[]
 export function getProduct(slug: string): Product | undefined
 export function getProductsByCategory(category: ProductCategoryId): Product[]
+export function getRelated(slug: string, n?: number): Product[]

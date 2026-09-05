@@ -1,0 +1,464 @@
+/* Screen-by-screen adaptation: 375 / 390 / 430 / 768 / 1024 / 1440 / 1920 */
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+.hero-media img,
+.overlap img,
+.rail-card img,
+.cat-tile img,
+.app-hit img,
+.tz-band img,
+.cta-power img,
+.process-full .shot img,
+.detail-hero img,
+.catalogue-card img,
+.product-card img {
+  max-width: none;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.product-rail {
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: 0.25rem;
+  padding-inline: 0.15rem;
+}
+
+.nav-a1 .container-a1 {
+  gap: 0.65rem;
+}
+
+.nav-brand {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nav-toggle {
+  flex: 0 0 auto;
+}
+
+/* Touch: reveal content that was hover-only */
+@media (hover: none) {
+  .rail-card .copy {
+    transform: none;
+  }
+  .rail-card .copy p {
+    max-height: 7rem;
+    opacity: 1;
+  }
+  .rail-card .accent {
+    width: 72px;
+  }
+  .app-hit .cap {
+    transform: none;
+  }
+  .btn-a1:hover {
+    transform: none;
+  }
+}
+
+/* —— 375–429 phones —— */
+@media (max-width: 429.98px) {
+  body {
+    font-size: 15.5px;
+  }
+
+  :root {
+    --nav-h: 76px;
+  }
+
+  .nav-brand .brand-lockup {
+    height: 50px;
+    max-width: min(260px, 68vw);
+  }
+
+  .hero.is-cinematic,
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero h1,
+  .page-hero h1 {
+    font-size: 2.35rem;
+    max-width: none;
+  }
+
+  .hero.is-cinematic .hero-content,
+  .hero-content {
+    padding: calc(var(--nav-h) + 1.25rem) 0 2.25rem;
+  }
+
+  .hero-float {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 1.15rem;
+    max-width: none;
+  }
+
+  .scroll-ind {
+    display: none;
+  }
+
+  .hero-actions .btn-a1 {
+    width: 100%;
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .stats-band {
+    clip-path: none;
+    padding: 2rem 0;
+  }
+
+  .stats-band ol {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stats-band em {
+    font-size: 1.7rem;
+  }
+
+  .stats-band h3 {
+    font-size: 1.05rem;
+  }
+
+  .overlap {
+    min-height: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .overlap img {
+    position: relative !important;
+    width: 100% !important;
+    height: 200px !important;
+    inset: auto !important;
+    border: 0 !important;
+  }
+
+  .float-note,
+  .float-note.is-alt {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 0;
+    max-width: none;
+  }
+
+  .rail-card {
+    flex-basis: 86vw;
+    min-height: 440px;
+  }
+
+  .rail-card h3 {
+    font-size: 1.7rem;
+  }
+
+  .cat-tiles,
+  .apps-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .cat-tiles a:first-child,
+  .apps-mosaic a:first-child {
+    grid-row: auto;
+  }
+
+  .cat-tile,
+  .app-hit {
+    min-height: 240px;
+  }
+
+  .proc-h-stage {
+    min-height: 0;
+  }
+
+  .proc-h-stage img {
+    min-height: 220px;
+    height: 240px;
+  }
+
+  .quality-board .words li {
+    font-size: 2.2rem;
+  }
+
+  .tz-band,
+  .cta-power {
+    min-height: 0;
+    padding: 3.25rem 0;
+  }
+
+  .tz-map {
+    display: none;
+  }
+
+  .vision-split article {
+    min-height: 0;
+    padding: 2rem 1.25rem;
+  }
+
+  .journey-ix button {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .detail-hero .copy {
+    padding: calc(var(--nav-h) + 1.5rem) 1.15rem 1.75rem;
+  }
+
+  .detail-hero figure {
+    min-height: 240px;
+  }
+
+  .process-full .shot {
+    min-height: 72svh;
+  }
+
+  .contact-split .info,
+  .contact-split .form-pane {
+    padding: 2rem 1.15rem;
+  }
+
+  .contact-form .btn-a1 {
+    width: 100%;
+  }
+
+  .footer {
+    padding: 2.75rem 0 1.25rem;
+  }
+
+  .nav-drawer a {
+    font-size: 1.55rem;
+  }
+}
+
+/* —— 430–767 large phones / small tablets —— */
+@media (min-width: 430px) and (max-width: 767.98px) {
+  body {
+    font-size: 16px;
+  }
+
+  .nav-brand .brand-lockup {
+    height: 56px;
+    max-width: min(300px, 64vw);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 11vw, 3.4rem);
+  }
+
+  .hero-float {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 1.25rem;
+    max-width: 22rem;
+  }
+
+  .scroll-ind {
+    display: none;
+  }
+
+  .stats-band {
+    clip-path: none;
+  }
+
+  .stats-band ol {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .overlap {
+    min-height: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .overlap img {
+    position: relative !important;
+    width: 100% !important;
+    height: 240px !important;
+    inset: auto !important;
+  }
+
+  .float-note,
+  .float-note.is-alt {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 0;
+    max-width: none;
+  }
+
+  .apps-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .apps-mosaic a:first-child {
+    grid-column: 1 / -1;
+    min-height: 260px;
+  }
+
+  .cat-tiles {
+    grid-template-columns: 1fr;
+  }
+
+  .rail-card {
+    min-height: 480px;
+  }
+
+  .tz-map {
+    width: 140px;
+    top: 12%;
+    right: 4%;
+  }
+
+  .detail-hero .copy {
+    padding: calc(var(--nav-h) + 2rem) 1.5rem 2rem;
+  }
+}
+
+/* —— 768–1023 tablets —— */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .nav-brand .brand-lockup {
+    height: 64px;
+    max-width: 380px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 7vw, 4.8rem);
+  }
+
+  .hero-float {
+    bottom: 4.5rem;
+    max-width: 200px;
+  }
+
+  .stats-band ol {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats-band {
+    clip-path: none;
+  }
+
+  .editorial h2 {
+    font-size: clamp(2.6rem, 6vw, 4rem);
+  }
+
+  .cat-tiles {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+
+  .cat-tiles a:first-child {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    min-height: 280px;
+  }
+
+  .apps-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+
+  .apps-mosaic a:first-child {
+    grid-row: auto;
+    grid-column: 1 / -1;
+    min-height: 300px;
+  }
+
+  .proc-h-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .proc-h-stage img {
+    height: 320px;
+  }
+
+  .quality-board {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .detail-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— 1024–1439 laptops —— */
+@media (min-width: 1024px) and (max-width: 1099.98px) {
+  .nav-brand .brand-lockup {
+    max-width: 420px;
+    height: 68px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-band ol {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-actions .btn-a1 {
+    width: auto;
+  }
+}
+
+/* —— 1440+ desktops —— */
+@media (min-width: 1440px) {
+  :root {
+    --max: 1400px;
+  }
+
+  .hero.is-cinematic {
+    min-height: 88svh;
+  }
+
+  .rail-card {
+    flex-basis: 460px;
+  }
+}
+
+/* —— 1920 ultrawide —— */
+@media (min-width: 1920px) {
+  :root {
+    --max: 1520px;
+  }
+
+  .hero h1 {
+    font-size: 7.4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 4.75rem 0;
+  }
+}

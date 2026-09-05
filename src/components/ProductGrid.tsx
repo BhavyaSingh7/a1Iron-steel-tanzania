@@ -2,14 +2,16 @@ import { useMemo, useState } from 'react'
 import type { Product, ProductCategoryId } from '../data/products.js'
 import { productCategories } from '../data/products.js'
 import { ProductCard } from './ProductCard'
+import { CatalogueCard } from './CatalogueCard'
 
 type Props = {
   products: Product[]
   filterable?: boolean
   cta?: string
+  variant?: 'cards' | 'catalogue'
 }
 
-export function ProductGrid({ products, filterable = false, cta }: Props) {
+export function ProductGrid({ products, filterable = false, cta, variant = 'cards' }: Props) {
   const [cat, setCat] = useState<ProductCategoryId>('all')
   const [tick, setTick] = useState(0)
   const list = useMemo(
@@ -45,6 +47,12 @@ export function ProductGrid({ products, filterable = false, cta }: Props) {
       ) : null}
       {list.length === 0 ? (
         <p className="lede">No products in this category yet.</p>
+      ) : variant === 'catalogue' ? (
+        <div key={tick} className="catalogue-list">
+          {list.map((p) => (
+            <CatalogueCard key={p.slug} product={p} />
+          ))}
+        </div>
       ) : (
         <div key={tick} className={`product-grid ${filterable ? 'is-filtering' : ''}`}>
           {list.map((p, i) => (

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import emblem from '../assets/logo/a1-emblem-nav.png'
 import { navLinks } from '../data/company'
 import { Button } from './Button'
+import { BrandLogo } from './BrandLogo'
 
 const overlayRoutes = new Set(['/', '/about', '/products', '/process', '/contact'])
 
@@ -11,7 +11,7 @@ export function Navbar() {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const overlay = overlayRoutes.has(pathname)
+  const overlay = overlayRoutes.has(pathname) || pathname.startsWith('/products/')
 
   useEffect(() => {
     setOpen(false)
@@ -32,7 +32,7 @@ export function Navbar() {
   }, [open])
 
   const solid = scrolled || open
-  const cls = `nav-a1 ${solid ? 'is-solid' : overlay ? 'is-over' : 'is-solid'}`
+  const cls = `nav-a1 ${solid ? 'is-light' : overlay ? 'is-over' : 'is-light'}`
 
   return (
     <>
@@ -42,11 +42,7 @@ export function Navbar() {
       <header className={cls}>
         <div className="container-a1">
           <Link to="/" className="nav-brand" aria-label="A1 Iron & Steel Tanzania Limited home">
-            <img src={emblem} alt="" width={40} height={38} />
-            <span className="nav-wordmark">
-              <strong>A1 IRON & STEEL</strong>
-              <span>TANZANIA LIMITED</span>
-            </span>
+            <BrandLogo />
           </Link>
           <nav aria-label="Primary">
             <ul className="nav-links">

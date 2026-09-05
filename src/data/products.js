@@ -200,4 +200,12 @@ export function getProductsByCategory(category) {
   return products.filter((p) => p.category === category)
 }
 
+export function getRelated(slug, n = 3) {
+  const current = getProduct(slug)
+  if (!current) return products.slice(0, n)
+  const same = products.filter((p) => p.slug !== slug && p.category === current.category)
+  const rest = products.filter((p) => p.slug !== slug && p.category !== current.category)
+  return [...same, ...rest].slice(0, n)
+}
+
 export const productSlugs = products.map((p) => p.slug)

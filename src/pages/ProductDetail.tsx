@@ -40,11 +40,7 @@ export default function ProductDetailPage() {
         path={`/products/${product.slug}`}
         schema={schema}
       />
-      <section className="section" style={{ paddingTop: 'calc(var(--nav-h) + 3rem)' }}>
-        <div className="container-a1">
-          <ProductDetailView product={product} />
-        </div>
-      </section>
+      <ProductDetailView product={product} />
     </>
   )
 }

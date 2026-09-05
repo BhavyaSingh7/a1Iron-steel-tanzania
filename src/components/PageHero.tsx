@@ -1,4 +1,5 @@
 import { SteelLine } from './SteelLine'
+import { images } from '../assets/images'
 
 type Props = {
   title: string
@@ -7,11 +8,16 @@ type Props = {
   imageAlt?: string
 }
 
-export function PageHero({ title, text, image, imageAlt = '' }: Props) {
+export function PageHero({
+  title,
+  text,
+  image = images.plant,
+  imageAlt = 'A1 Iron & Steel industrial operations',
+}: Props) {
   return (
     <header className="page-hero">
-      <div className="hero-media mill-field" aria-hidden={!image}>
-        {image ? <img src={image} alt={imageAlt} fetchPriority="high" decoding="async" /> : null}
+      <div className="hero-media">
+        <img src={image} alt={imageAlt} fetchPriority="high" decoding="async" />
         <div className="hero-shade" />
       </div>
       <div className="container-a1" style={{ position: 'relative', zIndex: 1 }}>
